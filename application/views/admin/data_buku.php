@@ -43,10 +43,55 @@
         <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-dashboard"></i> Dashboard</h3>
+                <h3 class="panel-title"><i class="fa fa-book"></i> Data Buku</h3>
               </div>
               <div class="panel-body">
-                Selamat Datang <b><?php echo $this->session->userdata("user_nama") ?></b> di halaman Administrator System
+                <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> Data Buku</h4>
+                            <hr>
+                          <table class="table">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>ID Buku</th>
+                                  <th>Judul</th>
+                                  <th>ISBN</th>
+                                  <th>Genre</th>
+                                  <th>Pengarang</th>
+                                  <th>Action</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>10001</td>
+                                  <td>1001 Alasan</td>
+                                  <td>9841257</td>
+                                  <td>Romantis</td>
+                                  <td>Sunaryo Wibianto</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>10002</td>
+                                  <td>Pembunuhan di Rumah Angker</td>
+                                  <td>9841723</td>
+                                  <td>Horror</td>
+                                  <td>Tambir Salimono</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>10003</td>
+                                  <td>Petualangan si Burung Kakek</td>
+                                  <td>8907042</td>
+                                  <td>Adventure</td>
+                                  <td>Romlah Ruqyah</td>
+                              </tr>
+                              </tbody>
+                          </table>
+                        </div><! --/content-panel -->
+                    </div><!-- /col-md-12 -->
+                  
               </div>
             </div>
         </div>
