@@ -30,4 +30,11 @@ class Admin extends CI_Model
             return $query->result();
         }
     }
+
+    public function get_book()
+    {
+        $sql = $this->db->query("SELECT * FROM tb_buku b
+                LEFT JOIN tb_pengarang p ON b.id_pengarang = p.id_pengarang");
+        return $sql;
+    }
 }
