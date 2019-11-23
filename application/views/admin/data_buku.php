@@ -97,3 +97,12 @@
                 </div>
               </div>
             </div>
+
+
+  <script type="text/javascript">
+      function ConfirmDelete()
+      {
+            if (confirm("Hapus Data ini?"))
+                 location.href=baseUrl+'<?php echo base_url("admin/data_buku/hapus".$data->buku);?>';
+      }
+  </script>

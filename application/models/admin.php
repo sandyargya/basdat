@@ -37,4 +37,16 @@ class Admin extends CI_Model
                 LEFT JOIN tb_pengarang p ON b.id_pengarang = p.id_pengarang");
         return $sql;
     }
+
+    public function delete($data){ 
+        $this->db->where('buku',$data);
+        $this->db->delete('tb_buku');
+
+    }
+
+    public function get_user()
+    {
+        $sql = $this->db->query("SELECT * from tb_user");
+        return $sql;
+    }
 }

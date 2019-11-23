@@ -30,8 +30,8 @@ class Data_buku extends CI_Controller
 		$this->load->view("footer");
 	}
 
-	public function hapus($id_buku){
-  		$this->tb_buku->delete($id_buku);
+	function hapus($data){
+  		$this->admin->delete($data);
 		redirect('admin/data_buku');
 	}
 }
