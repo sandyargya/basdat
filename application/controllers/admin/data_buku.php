@@ -21,7 +21,18 @@ class Data_buku extends CI_Controller
 		$this->load->view("header");
 		$this->load->view("admin/add_buku");
 		$this->load->view("footer");
-		# code...
+	}
+
+	public function editbuku()
+	{
+		$this->load->view("header");
+		$this->load->view("admin/edit_buku");
+		$this->load->view("footer");
+	}
+
+	public function hapus($id_buku){
+  		$this->tb_buku->delete($id_buku);
+		redirect('admin/data_buku');
 	}
 }
 ?>

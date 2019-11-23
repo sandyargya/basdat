@@ -7,9 +7,9 @@
     <div class="panel-body">
       <div class="col-md-12">
         <div class="content-panel">
-          <h4><i class="fa fa-angle-right"></i> Data Buku</h4>
+          <h4><i class="fa fa-angle-right"></i> Tambah Data</h4>
           <hr>
-          <a href="<?php echo base_url()?>admin/addbuku"><button type="button" class="btn"></button></a>
+          
           <table class="table">
             <thead>
               <tr>

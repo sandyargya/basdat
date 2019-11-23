@@ -34,7 +34,6 @@
               </a>
               <a href="<?php echo base_url('admin/dashboard')?>" class="list-group-item"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a>
               <a href="<?php echo base_url('admin/data_buku')?>" class="list-group-item"><i class="fa fa-book"></i>&nbsp Data Buku</a>
-              <a href="<?php echo base_url('admin/data_barang')?>" class="list-group-item"><i class="fa fa-folder"></i>&nbsp Genre Buku</a>
               <a href="<?php echo base_url('admin/data_barang')?>" class="list-group-item"><i class="fa fa-list-ul"></i>&nbsp Data Pengajuan</a>
               <a href="<?php echo base_url('admin/data_peminjam')?>" class="list-group-item"><i class="fa fa-folder-open"></i>&nbsp Data Peminjam </a>
               <a href="<?php echo base_url() ?>/admin/dashboard/logout" class="list-group-item"><i class="fa fa-sign-out"></i>&nbsp Logout</a>
