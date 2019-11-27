@@ -38,15 +38,17 @@ class Admin extends CI_Model
         return $sql;
     }
 
-    public function delete($data){ 
-        $this->db->where('buku',$data);
-        $this->db->delete('tb_buku');
-
-    }
-
     public function get_user()
     {
         $sql = $this->db->query("SELECT * from tb_user");
         return $sql;
     }
+
+    function input_data($data)
+    {
+        $query = "insert into tb_buku values('','$judul','$isbn','$genre','$id_pengarang')";
+        $this->db->query($query);
+    }
+
 }
+?>

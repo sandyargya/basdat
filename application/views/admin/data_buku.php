@@ -23,16 +23,16 @@
               </tr>
             </thead>
             <tbody>
-              <?php $n=1; foreach($buku as $asu){?>
+              <?php $n=1; foreach($buku as $asu) { ?>
                 <tr>
                   <td><?php echo $n++?></td>
-                  <td><?php echo $asu->id_buku?></td>
-                  <td><?php echo $asu->judul?></td>
-                  <td><?php echo $asu->isbn?></td>
-                  <td><?php echo $asu->genre?></td>
-                  <td><?php echo $asu->nama_pengarang?></td>
+                  <td><?php echo $asu->id_buku ?></td>
+                  <td><?php echo $asu->judul ?></td>
+                  <td><?php echo $asu->isbn ?></td>
+                  <td><?php echo $asu->genre ?></td>
+                  <td><?php echo $asu->nama_pengarang ?></td>
                   <td><a href="<?php echo base_url("admin/data_buku/editbuku")?>"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
-                  <a href="<?php echo base_url("admin/data_buku/hapus")?>"><button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="ConfirmDelete()"><i class="fa fa-trash-o"></i></button></a></td>
+                  <a href="<?php echo base_url("admin/data_buku/hapus".$asu->id_buku)?>>"<button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="ConfirmDelete()"><i class="fa fa-trash-o"></i></button></a></td>
                 </tr>
               <?php } ?>
             </tbody>
@@ -51,41 +51,41 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Tambah Buku</h4>
                   </div>
-                  <form action="<?php echo base_url(''); ?>admin/barang/tambah" method="POST">
+                  <form action="<?php echo base_url(''); ?>admin/data_buku/add_buku" method="POST">
                   <div class="modal-body">
                     <div class="form-group">
                       <!-- ID BUKU lek digae auto yaopo ? maksute IDne melanjutkan urutan sebelum e-->
                     <label class="col-sm-2 col-sm-2 control-label">ID Buku</label>
                     <div class="col-sm-10">
-                  <input type="text" class="form-control" name="namabarang">
+                  <input type="text" class="form-control" name="idbuku">
                     </div>
                 </div><br><br>
                   
               <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Judul Buku</label>
                     <div class="col-sm-10">
-                  <input type="text" class="form-control" name="serialnumber">
+                  <input type="text" class="form-control" name="judulbuku">
                     </div>
                 </div><br><br>
 
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">ISBN</label>
                     <div class="col-sm-10">
-                  <input type="text" class="form-control" name="serialnumber">
+                  <input type="text" class="form-control" name="isbnbuku">
                     </div>
                 </div><br><br>
 
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Genre Buku</label>
                     <div class="col-sm-10">
-                  <input type="text" class="form-control" name="serialnumber">
+                  <input type="text" class="form-control" name="genrebuku">
                     </div>
                 </div><br><br>
 
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Pengarang</label>
                     <div class="col-sm-10">
-                  <input type="text" class="form-control" name="serialnumber">
+                  <input type="text" class="form-control" name="pengarangbuku">
                     </div>
                 </div><br><br>
                   </div>
@@ -97,12 +97,3 @@
                 </div>
               </div>
             </div>
-
-
-  <script type="text/javascript">
-      function ConfirmDelete()
-      {
-            if (confirm("Hapus Data ini?"))
-                 location.href=baseUrl+'<?php echo base_url("admin/data_buku/hapus".$data->buku);?>';
-      }
-  </script>

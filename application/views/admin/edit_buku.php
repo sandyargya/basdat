@@ -47,7 +47,7 @@
                 </div><br><br>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a href="<?php echo base_url("admin/data_buku")?>"><button type="button" class="btn btn-default">Cancel</button></a>
                     <button type="submit" class="btn btn-success" name="submit">Simpan</button>
                   </div>
               </form>
