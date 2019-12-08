@@ -44,11 +44,42 @@ class Admin extends CI_Model
         return $sql;
     }
 
+        public function get_pengarang()
+    {
+        $sql = $this->db->query("SELECT * from tb_pengarang");
+        return $sql;
+    }
+
     function input_data($data)
     {
         $query = "insert into tb_buku values('','$judul','$isbn','$genre','$id_pengarang')";
         $this->db->query($query);
     }
+
+    public function added_buku($data) {
+        $this->db->insert('tb_buku', $data);
+        return $this->db->insert_id();
+    }
+
+        public function get_edit_buku($id_buku) {
+        $this->db->from('tb_buku');
+        $this->db->where('id_buku', $id_buku);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function edit_buku($where, $data) {
+        $this->db->update('tb_buku', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+public function delete_buku($id_buku) {
+        $sql = "DELETE FROM tb_buku  WHERE id_buku = '" . $id_buku . "'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
 
 }
 ?>
