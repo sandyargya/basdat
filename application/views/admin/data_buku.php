@@ -1,4 +1,5 @@
 
+
 <div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -33,7 +34,7 @@
                   <td><?php echo $asu->isbn ?></td>
                   <td><?php echo $asu->genre ?></td>
                   <td><?php echo $asu->nama_pengarang ?></td>
-                <td><a href="#" onclick="delete_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
+                <td><a href="#" onclick="edit_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
 
                     <a href="#" onclick="delete_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
                   </tr>
@@ -189,9 +190,7 @@
       type: "GET",
       dataType: "JSON",
       success: function(data)
-
       {
-
         console.log(data);
         $('[id="id_buku_edit"]').val(data.id_buku);
         $('[id="judul"]').val(data.judul);
@@ -206,20 +205,14 @@
       }
     });
   }
-
    function delete_buku(id_buku)
   {
     console.log(id_buku);
-
     var id_bukunya = id_buku;
  
      $('[id="id_buku"]').val(id_bukunya);
      $('#modal_delete').modal('show');
     
   }
-
   
-
   </script>
-
-
