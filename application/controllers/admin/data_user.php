@@ -95,7 +95,7 @@ class Data_user extends CI_Controller
 		}
 	}
 
-	function delete_user() {
+	public function delete_user() {
 		$id_user = $this->input->post('id_user');
 		$this->admin->delete_user($id_user);
 		$this->session->set_flashdata('pesan','Data berhasil dihapus');

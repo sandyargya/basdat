@@ -36,7 +36,7 @@
                   <td><?php echo $asu->nama_pengarang ?></td>
                 <td><a href="#" onclick="edit_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
 
-                    <a href="#" onclick="delete_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
+                    <a href="#" onclick="delete_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
                   </tr>
                 <?php } ?>
               </tbody>

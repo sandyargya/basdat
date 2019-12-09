@@ -73,7 +73,7 @@ class Admin extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function get_edit_user($id_user){
+    public function get_user_edit($id_user){
         $this->db->from('tb_user');
         $this->db->where('id_user', $id_user);
         $query = $this->db->get();
@@ -85,7 +85,7 @@ class Admin extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function delete_user($id_user){
+    public function delete_user($id_user) {
         $sql = "DELETE FROM tb_user WHERE id_user = '" . $id_user . "'";
         $query = $this->db->query($sql);
         return $query;

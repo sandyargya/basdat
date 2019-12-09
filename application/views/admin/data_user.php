@@ -31,7 +31,8 @@
                   <td><?php echo $hai->nama_user?></td>
                   <td><?php echo $hai->role?></td>
                   <td><a href="#" onclick="edit_user(<?php echo $hai->id_user;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
-                  <a href="#" onclick="delete_user(<?php echo $hai->id_user;?>"><button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
+
+                  <a href="#" onclick="delete_user(<?php echo $hai->id_user;?>)"><button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
                 </tr>
               <?php } ?>
             </tbody>
@@ -84,7 +85,7 @@
               <label class="col-sm-2 col-sm-2 control-label">Role</label>
               <div class="col-sm-10">
                <select class="form-control" name="role" >
-                <option value="" selected="" disabled="">Pilih pengarang</option>
+                <option value="" selected="" disabled="">Pilih</option>
                 <?php foreach ($pengarang as $p) {?>
                   <option value="<?php echo $p->id_pengarang ?>"><?php echo $p->nama_pengarang ?></option>
                 <?php }?>
@@ -204,7 +205,7 @@
     console.log(id_user);
     var id_usernya = id_user;
  
-     $('[id="id_user"]').val(id_userya);
+     $('[id="id_user"]').val(id_usernya);
      $('#modal_delete').modal('show');
     
   }
