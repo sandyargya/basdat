@@ -55,7 +55,8 @@ class Data_user extends CI_Controller
  			$insert = $this->admin->added_user($data);
  			if ($insert != '') {
  				$id 	= $this->db->insert_id();
- 				$this->session->set_flashdata('pesan','User berhasil terdaftar');
+				 $this->session->set_flashdata('pesan','User berhasil terdaftar');
+				 redirect('admin/data_user');
  			} else {
  				$this->session->set_flashdata('hapus','User sudah terdaftar');
  				redirect('admin/data_user');

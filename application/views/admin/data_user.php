@@ -53,12 +53,12 @@
         </div>
         <form action="<?php echo base_url(''); ?>admin/data_user/add_user" method="POST">
           <div class="modal-body">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">ID User</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="id_user">
               </div>
-            </div><br><br>
+            </div><br><br> -->
 
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Username</label>
@@ -70,7 +70,7 @@
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Password</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control" name="password">
+                <input type="password" class="form-control" name="password">
               </div>
             </div><br><br>
 
@@ -86,9 +86,8 @@
               <div class="col-sm-10">
                <select class="form-control" name="role" >
                 <option value="" selected="" disabled="">Pilih</option>
-                <?php foreach ($pengarang as $p) {?>
-                  <option value="<?php echo $p->id_pengarang ?>"><?php echo $p->nama_pengarang ?></option>
-                <?php }?>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
               </select>
             </div>
           </div><br><br>
@@ -124,7 +123,7 @@
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Password</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control" name="password" id="password">
+                <input type="password" class="form-control" name="password" id="password">
               </div>
             </div><br><br>
 
@@ -140,9 +139,8 @@
               <div class="col-sm-10">
                <select class="form-control" name="role" id="role">
                 <option value="" selected="" disabled="">Pilih</option>
-                <?php foreach ($pengarang as $p) {?>
-                  <option value="<?php echo $p->id_pengarang ?>"><?php echo $p->nama_pengarang ?></option>
-                <?php }?>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
               </select>
             </div>
           </div><br><br>
@@ -191,8 +189,8 @@
         $('[id="username"]').val(data.username);
         $('[id="password"]').val(data.password);
         $('[id="nama_user"]').val(data.nama_user);
-        $('[id="role"]').val(data.id_pengarang);
-        $('#modal_edit_buku').modal('show');
+        $('[id="role"]').val(data.role);
+        $('#modal_edit_user').modal('show');
       },
       error: function (jqXHR, textStatus, errorThrown)
       {
