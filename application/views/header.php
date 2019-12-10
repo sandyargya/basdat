@@ -33,6 +33,7 @@
                 ADMINISTRATOR
               </a>
               <a href="<?php echo base_url('admin/dashboard')?>" class="list-group-item"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a>
+              <a href="<?php echo base_url('admin/data_pengarang')?>" class="list-group-item"><i class="fa fa-user"></i>&nbsp Data Pengarang</a>
               <a href="<?php echo base_url('admin/data_buku')?>" class="list-group-item"><i class="fa fa-book"></i>&nbsp Data Buku</a>
               <a href="<?php echo base_url('admin/data_barang')?>" class="list-group-item"><i class="fa fa-list-ul"></i>&nbsp Data Pengajuan</a>
               <a href="<?php echo base_url('admin/data_peminjam')?>" class="list-group-item"><i class="fa fa-folder-open"></i>&nbsp Data Peminjam </a>

@@ -70,7 +70,7 @@
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Password</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" name="password">
+                <input type="text" class="form-control" name="password">
               </div>
             </div><br><br>
 
@@ -123,7 +123,7 @@
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Password</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" name="password" id="password">
+                <input type="text" class="form-control" name="password" id="password">
               </div>
             </div><br><br>
 

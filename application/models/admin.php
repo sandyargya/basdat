@@ -90,5 +90,28 @@ class Admin extends CI_Model
         $query = $this->db->query($sql);
         return $query;
     }
+
+    public function added_pengarang($data) {
+        $this->db->insert('tb_pengarang', $data);
+        return $this->db->insert_id();
+    }
+
+    public function get_pengarang_edit($id_pengarang){
+        $this->db->from('tb_pengarang');
+        $this->db->where('id_pengarang', $id_pengarang);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function edit_pengarang($where, $data){
+        $this->db->update('tb_pengarang', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function delete_pengarang($id_pengarang) {
+        $sql = "DELETE FROM tb_pengarang WHERE id_pengarang = '" . $id_pengarang . "'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
 ?>
