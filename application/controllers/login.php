@@ -59,8 +59,9 @@ class Login extends CI_Controller {
                         //redirect berdasarkan level user
                         if($this->session->userdata("role") == "admin"){
                             redirect('admin/dashboard/');
-                        }else{
-                            redirect('user/dashboard/');
+                        }else{                            
+                            $this->add_pengunjung($session_data['user_id']);
+                            // redirect('user/dashboard/');
                         }
 
                     }
@@ -79,5 +80,34 @@ class Login extends CI_Controller {
         }
 
     }
+
+    public function add_pengunjung($user_id) {		
+        $tanggal = date('Y-m-d');	
+		$data = array (
+            'id_visitor' => "",
+			'id_user' =>$user_id,
+			'tanggal' =>$tanggal
+		);
+		$query = "SELECT * from tb_pengunjung u
+		where id_user='" . $data['id_user'] . "' AND tanggal='" .$data['tanggal'] ."'";
+		
+		$hasil = $this->db->query($query);
+		$yay = $hasil->result_array();
+		$cek = $hasil->num_rows();
+		if ($hasil->num_rows() > 0) {
+			$this->session->set_flashdata('hapus', 'Data already exist');
+			redirect('user/dashboard/');
+		} else {
+			$insert = $this->admin->added_pengunjung($data);
+			if ($insert != '') {
+				$id     = $this->db->insert_id();
+				$this->session->set_flashdata('pesan', 'Data successfully add');
+				redirect('user/dashboard/');
+			} else {
+				$this->session->set_flashdata('hapus', 'Data already exist');
+				redirect('user/dashboard/');
+			}
+		}
+	}
 }
 ?>

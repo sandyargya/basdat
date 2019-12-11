@@ -43,6 +43,26 @@ class Admin extends CI_Model
         $sql = $this->db->query("SELECT * from tb_pengarang");
         return $sql;
     }
+
+    public function get_peminjam(){
+        $sql = $this->db->query("SELECT a.id_peminjam,c.nama_user,d.judul,a.start,a.end  FROM tb_peminjam AS a
+        INNER JOIN tb_pengunjung AS b ON a.id_visitor = b.id_visitor
+        INNER JOIN tb_user AS c ON b.id_user = c.id_user
+        INNER JOIN tb_buku AS d ON a.id_buku = d.id_buku");
+        return $sql;
+    }
+    
+    public function get_pengunjung(){
+        $sql = $this->db->query("SELECT a.id_visitor , b.nama_user , a.tanggal FROM tb_pengunjung AS a 
+            INNER JOIN tb_user AS b ON a.id_user=b.id_user");
+        return $sql;
+    }
+
+    public function added_pengunjung($data) {
+        $this->db->insert('tb_pengunjung', $data);
+        return $this->db->insert_id();
+    }
+
     function input_data($data)
     {
         $query = "insert into tb_buku values('','$judul','$isbn','$genre','$id_pengarang')";
@@ -110,6 +130,29 @@ class Admin extends CI_Model
 
     public function delete_pengarang($id_pengarang) {
         $sql = "DELETE FROM tb_pengarang WHERE id_pengarang = '" . $id_pengarang . "'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function added_peminjam($data) {
+        $this->db->insert('tb_peminjam', $data);
+        return $this->db->insert_id();
+    }
+
+    public function get_peminjam_edit($id_peminjam){
+        $this->db->from('tb_peminjam');
+        $this->db->where('id_peminjam', $id_peminjam);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function edit_peminjam($where, $data){
+        $this->db->update('tb_peminjam', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function delete_peminjam($id_peminjam) {
+        $sql = "DELETE FROM tb_peminjam WHERE id_peminjam = '" . $id_peminjam . "'";
         $query = $this->db->query($sql);
         return $query;
     }

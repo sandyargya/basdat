@@ -32,7 +32,7 @@ class Data_user extends CI_Controller
 	function add_user() {
 		$id_user = $this->input->post('id_user');
 		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+		$password = MD5($this->input->post('password'));
 		$nama_user = $this->input->post('nama_user');
 		$role = $this->input->post('role');
 		$data = array (
