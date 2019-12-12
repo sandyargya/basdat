@@ -30,13 +30,13 @@ class Data_peminjam extends CI_Controller
 	//}
 
 	function add_peminjam() {
-		$id_visitor = $this->input->post('id_visitor');
+		$id_user = $this->input->post('id_user');
 		$id_buku = $this->input->post('id_buku');
 		$start = $this->input->post('tanggal_mulai');
 		$end = $this->input->post('tanggal_selesai');		
 		$data = array (
 			'id_peminjam' => "",
-			'id_visitor' => $id_visitor,
+			'id_user' => $id_user,
 			'id_buku' => $id_buku,
 			'start' => $start,
 			'end' => $end
@@ -70,7 +70,7 @@ class Data_peminjam extends CI_Controller
 
 	function edited_peminjam(){
 		$id_peminjam = $this->input->post('id_peminjam_edit');
-		$id_visitor = $this->input->post('id_visitor');
+		$id_user = $this->input->post('id_user');
 		$id_buku = $this->input->post('id_buku');
 		$start = $this->input->post('tanggal_mulai');
 		$end = $this->input->post('tanggal_selesai');		
@@ -100,6 +100,11 @@ class Data_peminjam extends CI_Controller
 		$this->session->set_flashdata('pesan','Data berhasil dihapus');
 		redirect('admin/data_peminjam');
 	}
+
+	function get_buku_edit($id_buku){
+		$data = $this->admin->get_edit_buku($id_buku);
+		echo json_encode($data);
+}
 }
 
 ?>

@@ -28,12 +28,14 @@ class Data_buku extends CI_Controller
 		$isbn = $this->input->post('isbn');
 		$genre = $this->input->post('genre');
 		$id_pengarang = $this->input->post('id_pengarang');
+		$stok = $this->input->post('stok');
 		$data = array (
 			'id_buku' =>$id_buku,
 			'judul' =>$judul,
 			'isbn' =>$isbn,
 			'genre' =>$genre,
-			'id_pengarang' =>$id_pengarang
+			'id_pengarang' =>$id_pengarang,
+			'stok' => $stok
 		);
 		$query = "SELECT * from tb_buku u
 		where id_buku='" . $data['id_buku'] . "'";
@@ -71,7 +73,8 @@ class Data_buku extends CI_Controller
 			'judul' =>$judul,
 			'isbn' =>$isbn,
 			'genre' =>$genre,
-			'id_pengarang' =>$id_pengarang
+			'id_pengarang' =>$id_pengarang,
+			'stok' => $stok
 		);
 		$query = "SELECT * from (select * from tb_buku where id_buku <> " . $id_buku . ") u
 		where id_buku='" . $data['id_buku'] . "'";

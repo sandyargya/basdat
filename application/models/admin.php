@@ -45,10 +45,11 @@ class Admin extends CI_Model
     }
 
     public function get_peminjam(){
-        $sql = $this->db->query("SELECT a.id_peminjam,c.nama_user,d.judul,a.start,a.end  FROM tb_peminjam AS a
-        INNER JOIN tb_pengunjung AS b ON a.id_visitor = b.id_visitor
+        $sql = $this->db->query("SELECT a.id_peminjam,c.nama_user,d.judul,a.start,a.end,a.status  FROM tb_peminjam AS a
+        INNER JOIN tb_pengunjung AS b ON a.id_user = b.id_user
         INNER JOIN tb_user AS c ON b.id_user = c.id_user
-        INNER JOIN tb_buku AS d ON a.id_buku = d.id_buku");
+        INNER JOIN tb_buku AS d ON a.id_buku = d.id_buku
+        GROUP BY a.id_peminjam ");
         return $sql;
     }
     
@@ -65,7 +66,7 @@ class Admin extends CI_Model
 
     function input_data($data)
     {
-        $query = "insert into tb_buku values('','$judul','$isbn','$genre','$id_pengarang')";
+        $query = "insert into tb_buku values('','$judul','$isbn','$genre','$id_pengarang','$stok')";
         $this->db->query($query);
     }
     public function added_buku($data) {
@@ -155,6 +156,12 @@ class Admin extends CI_Model
         $sql = "DELETE FROM tb_peminjam WHERE id_peminjam = '" . $id_peminjam . "'";
         $query = $this->db->query($sql);
         return $query;
+    }
+
+    public function request($data)
+    {
+        $this->db->insert('tb_peminjam', $data);
+        return $this->db->insert_id();
     }
 }
 ?>

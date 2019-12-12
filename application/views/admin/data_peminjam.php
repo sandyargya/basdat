@@ -17,6 +17,8 @@
                 <th>Nama Buku</th>
                 <th>Tanggal Mulai</th>
                 <th>Tanggal Selesai</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -28,6 +30,8 @@
                   <td><?php echo $hai->judul?></td>
                   <td><?php echo $hai->start?></td>
                   <td><?php echo $hai->end?></td>
+                  <td><?php echo $hai->status?></td>
+                  <td><a href="#" onclick="edit_peminjam(<?php echo $hai->id_peminjam;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
                 </tr>
               <?php } ?>
             </tbody>
@@ -51,7 +55,7 @@
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Id Visitor</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="id_visitor">
+                <input type="text" class="form-control" name="id_user">
               </div>
             </div><br><br>
 
@@ -73,7 +77,19 @@
               <div class="col-sm-10">
                 <input type="date" class="form-control" name="end_date" value="<?php echo isset($itemOutData->date_out) ? set_value('date_out', date('Y-m-d', strtotime($itemOutData->date_out))) : set_value('date_out'); ?>">
               </div>
-            </div><br><br>            
+            </div><br><br>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Status</label>
+              <div class="col-sm-10">
+               <select class="form-control" name="id_pengarang" >
+                <option value="" selected="" disabled="">Pilih status</option>
+                <?php foreach ($status as $s) {?>
+                  <option value="<?php echo $s->status ?>"><?php echo $s->status ?></option>
+                <?php }?>
+              </select>
+            </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -152,5 +168,25 @@
   </div>
 </div>
 
-<script type="text/javascript">  
+<script type="text/javascript">
+  <script type="text/javascript">
+  function edit_peminjam(id_peminjam)
+  {
+    $.ajax({
+      url : "<?php echo base_url('admin/data_peminjam/get_peminjam_edit/')?>" + id_peminjam,
+      type: "GET",
+      dataType: "JSON",
+      success: function(data)
+      {
+        console.log(data);
+        $('[id="id_peminjam_edit"]').val(data.id_peminjam);
+        $('[id="status"]').val(data.status);
+        $('#modal_edit_buku').modal('show');
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+        alert('Error get data from ajax');
+      }
+    });
+  }
   </script>

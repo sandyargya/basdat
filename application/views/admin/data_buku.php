@@ -22,6 +22,7 @@
                 <th>ISBN</th>
                 <th>Genre</th>
                 <th>Pengarang</th>
+                <th>Stok Buku</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -34,6 +35,7 @@
                   <td><?php echo $asu->isbn ?></td>
                   <td><?php echo $asu->genre ?></td>
                   <td><?php echo $asu->nama_pengarang ?></td>
+                  <td><?php echo $asu->stok ?></td>
                 <td><a href="#" onclick="edit_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
 
                     <a href="#" onclick="delete_buku(<?php echo $asu->id_buku;?>)"><button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
@@ -83,6 +85,13 @@
               <label class="col-sm-2 col-sm-2 control-label">Genre Buku</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="genre">
+              </div>
+            </div><br><br>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Stok Buku</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="stok">
               </div>
             </div><br><br>
 
@@ -137,6 +146,13 @@
               <label class="col-sm-2 col-sm-2 control-label">Genre Buku</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="genre" id="genre">
+              </div>
+            </div><br><br>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Stok Buku</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="stok">
               </div>
             </div><br><br>
 
@@ -196,6 +212,7 @@
         $('[id="judul"]').val(data.judul);
         $('[id="isbn"]').val(data.isbn);
         $('[id="genre"]').val(data.genre);
+        $('[id="stok"]').val(data.stok);
         $('[id="id_pengarang"]').val(data.id_pengarang);
         $('#modal_edit_buku').modal('show');
       },
