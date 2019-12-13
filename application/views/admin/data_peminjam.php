@@ -94,7 +94,8 @@
                 <option value="Approve">Approve</option>
                 <option value="Decline">Decline</option>
               </select>
-            </div><br><br>      
+            </div><br><br> 
+            </div>     
         </div>
         <div class="modal-footer">
                  <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -105,24 +106,27 @@
     </div>
   </div>
 </div>
-    
-   <div class="modal fade" id="modal_delete" role="dialog">
+
+<div id="modal_delete" class="modal fade" role="dialog">
   <div class="modal-dialog">
+
     <!-- Modal content-->
-    <form method="POST" action="<?php echo base_url(''); ?>admin/data_peminjam/delete_peminjam">
-      <div class="modal-content">
+    <div class="modal-content">
+      <form action="<?php echo base_url(''); ?>admin/data_peminjam/delete_peminjam" method = "POST">
         <div class="modal-body">
-          <span>Apakah anda yakin menghapus data ini?</span>
-          <input type="hidden" name="id_peminjam" id="id_peminjam">
+          <input type="hidden" class="form-control" name="id_peminjam" id="id_peminjam">
+          <h4>Apakah anda yakin menghapus data ini?</h4>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-success" name="submit">Ya</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-danger" name="submit">Delete</button>
         </div>
-      </div>
-    </form>
+      </form>
+
+    </div>
   </div>
-</div>
+</div>    
+
 
 <script type="text/javascript">
   
@@ -149,12 +153,21 @@
 
   function delete_peminjam(id_peminjam)
   {
-    console.log(id_peminjam);
-    var id_peminjamnya = id_peminjam;
- 
-     $('[id="id_peminjam"]').val(id_peminjamnya);
-     $('#modal_delete').modal('show');
-    
+    $.ajax({
+      url : "<?php echo base_url('admin/data_peminjam/get_peminjam_edit/')?>" + id_peminjam,
+      type: "GET",
+      dataType: "JSON",
+      success: function(data)
+      {
+        console.log(data);
+        $('[id="id_peminjam"]').val(data.id_peminjam);
+        $('#modal_delete').modal('show');
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+        alert('Error get data from ajax');
+      }
+    });
   }
 
   function printpdf () 
