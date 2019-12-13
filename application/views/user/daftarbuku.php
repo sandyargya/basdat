@@ -32,8 +32,8 @@
                 USER
               </a>
               <a href="<?php echo base_url('user/dashboard')?>" class="list-group-item"><i class="fa fa-dashboard"></i> Dashboard</a>
-              <a href="<?php echo base_url('user/daftar_buku');?>" class="list-group-item"><i class="fa fa-book"></i> Daftar Buku</a>
-              <a href="<?php echo base_url('user/history');?>" class="list-group-item"><i class="fa fa-folder"></i> Histori Peminjaman</a>
+              <a href="<?php echo base_url('user/daftar_buku');?>" class="list-group-item"><i class="fa fa-list"></i> Daftar Buku</a>
+              <a href="<?php echo base_url('user/history');?>" class="list-group-item"><i class="fa fa-history"></i> Histori Peminjaman</a>
               <a href="<?php echo base_url() ?>/user/dashboard/logout" class="list-group-item"><i class="fa fa-sign-out"></i> Logout</a>
             </div>
         </div>

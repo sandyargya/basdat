@@ -9,6 +9,7 @@
           <h4><i class="fa fa-angle-right"></i> Data Pengarang</h4>
           <hr>
           <button type="button" class="btn"  data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i></button>
+          <button type="button" class="btn" onclick="printpdf()"><i class="fa fa-print"></i></button>
           <table class="table">
             <thead>
               <tr>
@@ -180,6 +181,13 @@
      $('[id="id_pengarang"]').val(pengarangId);
      $('#modal_delete').modal('show');
     
+  }
+
+    function printpdf () 
+  {
+    window.open('../cetak/pengarang');
+
+    return false;
   }
   
   </script>

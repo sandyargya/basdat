@@ -8,6 +8,7 @@
         <div class="content-panel">
           <h4><i class="fa fa-angle-right"></i> Data Pengunjung</h4>
           <hr>
+          <button type="butt" class="btn" onclick="printpdf()"><i class="fa fa-print"></i></button>
           <table class="table">
             <thead>
               <tr>
@@ -36,5 +37,10 @@
   </div>
 
 
-<script type="text/javascript">  
+<script type="text/javascript">
+function printpdf () 
+  {
+    window.open('../cetak/pengunjung');
+    return false;  
+  }
   </script>

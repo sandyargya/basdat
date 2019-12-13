@@ -8,6 +8,7 @@
         <div class="content-panel">
           <h4><i class="fa fa-angle-right"></i> Data Peminjam</h4>
           <hr>
+          <button type="butt" class="btn" onclick="printpdf()"><i class="fa fa-print"></i></button>
           <table class="table">
             <thead>
               <tr>
@@ -32,6 +33,8 @@
                   <td><?php echo $hai->end?></td>
                   <td><?php echo $hai->status?></td>
                   <td><a href="#" onclick="edit_peminjam(<?php echo $hai->id_peminjam;?>)"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
+
+                  <a href="#" onclick="delete_peminjam(<?php echo $hai->id_peminjam;?>)"><button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></button></a></td>
                 </tr>
               <?php } ?>
             </tbody>
@@ -124,5 +127,22 @@
         alert('Error get data from ajax');
       }
     });
+  }
+
+  function delete_peminjam(id_peminjam)
+  {
+    console.log(id_peminjam);
+    var id_peminjamnya = id_peminjam;
+ 
+     $('[id="id_peminjam"]').val(id_peminjamnya);
+     $('#modal_delete').modal('show');
+    
+  }
+
+  function printpdf () 
+  {
+    window.open('../cetak/peminjam');
+
+    return false;
   }
   </script>
