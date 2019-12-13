@@ -49,7 +49,18 @@ class Admin extends CI_Model
         INNER JOIN tb_pengunjung AS b ON a.id_user = b.id_user
         INNER JOIN tb_user AS c ON b.id_user = c.id_user
         INNER JOIN tb_buku AS d ON a.id_buku = d.id_buku
-        GROUP BY a.id_peminjam ");
+        GROUP BY a.id_peminjam
+        ORDER BY a.status ASC ");
+        return $sql;
+    }
+    public function get_peminjam_user($user_id){
+        $sql = $this->db->query("SELECT a.id_peminjam,c.nama_user,d.judul,a.start,a.end,a.status  FROM tb_peminjam AS a
+        INNER JOIN tb_pengunjung AS b ON a.id_user = b.id_user
+        INNER JOIN tb_user AS c ON b.id_user = c.id_user
+        INNER JOIN tb_buku AS d ON a.id_buku = d.id_buku
+        WHERE a.id_user = $user_id
+        GROUP BY a.id_peminjam
+        ORDER BY a.status ASC");
         return $sql;
     }
     
@@ -141,9 +152,11 @@ class Admin extends CI_Model
     }
 
     public function get_peminjam_edit($id_peminjam){
-        $this->db->from('tb_peminjam');
-        $this->db->where('id_peminjam', $id_peminjam);
-        $query = $this->db->get();
+        $query = $this->db->query("SELECT a.id_peminjam as 'id_peminjam',c.nama_user as 'nama_user',d.judul as 'judul',a.start,a.end,a.status  FROM tb_peminjam AS a
+        INNER JOIN tb_pengunjung AS b ON a.id_user = b.id_user
+        INNER JOIN tb_user AS c ON b.id_user = c.id_user
+        INNER JOIN tb_buku AS d ON a.id_buku = d.id_buku
+        WHERE a.id_peminjam = $id_peminjam ");
         return $query->row();
     }
 

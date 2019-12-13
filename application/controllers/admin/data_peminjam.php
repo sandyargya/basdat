@@ -70,28 +70,18 @@ class Data_peminjam extends CI_Controller
 
 	function edited_peminjam(){
 		$id_peminjam = $this->input->post('id_peminjam_edit');
-		$id_user = $this->input->post('id_user');
-		$id_buku = $this->input->post('id_buku');
-		$start = $this->input->post('tanggal_mulai');
-		$end = $this->input->post('tanggal_selesai');		
+		$status = $this->input->post('status');
+		$start = $this->input->post('start_date');
+		$end = $this->input->post('end_date');		
 		$data = array(
-			'id_buku' => $id_buku,
 			'start' => $start,
-			'end' => $end
+			'end' => $end,
+			'status' => $status
 		);
-		$query = "SELECT * from (select * from tb_peminjam where id_peminjam <> " . $id_peminjam . ") u 
-		where id_peminjam= '" . $data['id_peminjam'] . "'";
-		$hasil = $this->db->query($query);
-		$oke = $hasil->result_array();
-		$cek = $hasil->num_rows();
-		if ($hasil->num_rows() > 0) {
-			$this->session->set_flashdata('hapus','Peminjam sudah terdaftar');
-			redirect('admin/data_peminjam');
-		} else {
-			$this->admin->edit_peminjam(array('id_peminjam' => $this->input->post('id_peminjam_edit')), $data);
-			$this->session->set_flashdata('pesan','Data berhasil diperbaharui');
-			redirect('admin/data_peminjam');
-		}
+		
+		$this->admin->edit_peminjam(array('id_peminjam' => $this->input->post('id_peminjam_edit')), $data);
+		$this->session->set_flashdata('pesan','Data berhasil diperbaharui');
+		redirect('admin/data_peminjam');
 	}
 
 	public function delete_peminjam() {

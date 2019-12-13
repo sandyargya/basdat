@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 03:38 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Dec 13, 2019 at 12:21 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -56,8 +56,8 @@ CREATE TABLE `tb_peminjam` (
   `id_peminjam` int(30) NOT NULL,
   `id_user` int(30) NOT NULL,
   `id_buku` int(30) NOT NULL,
-  `start` date NOT NULL,
-  `end` date NOT NULL,
+  `start` date DEFAULT NULL,
+  `end` date DEFAULT NULL,
   `status` enum('Request','Approve','Decline','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -66,9 +66,12 @@ CREATE TABLE `tb_peminjam` (
 --
 
 INSERT INTO `tb_peminjam` (`id_peminjam`, `id_user`, `id_buku`, `start`, `end`, `status`) VALUES
-(1, 2, 1004, '0000-00-00', '0000-00-00', 'Request'),
-(2, 2, 1004, '0000-00-00', '0000-00-00', 'Request'),
-(3, 2, 1003, '0000-00-00', '0000-00-00', 'Request');
+(1, 3, 1003, NULL, NULL, 'Request'),
+(2, 2, 1003, NULL, NULL, 'Request'),
+(3, 2, 1003, '2019-12-13', '2019-12-20', 'Approve'),
+(4, 2, 1003, NULL, NULL, 'Request'),
+(5, 2, 1003, NULL, NULL, 'Request'),
+(6, 2, 1004, NULL, NULL, 'Request');
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,8 @@ CREATE TABLE `tb_pengunjung` (
 
 INSERT INTO `tb_pengunjung` (`id_visitor`, `id_user`, `tanggal`) VALUES
 (1, 2, '2019-12-11'),
-(2, 2, '2019-12-12');
+(2, 2, '2019-12-12'),
+(3, 2, '2019-12-13');
 
 -- --------------------------------------------------------
 
@@ -133,7 +137,7 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama_user`, `role`) VALUES
 (1, 'sandott', 'b6e49a8ff2a1f915b384b0690875f073', 'Sandy Argya', 'admin'),
 (2, 'tambir', '51b7613b184c2503b6c45670b6140661', 'Tambir Sutaryo', 'user'),
-(4, 'holehole', '030796b1ff84e200106802b505aa2f17', 'holecu', 'admin');
+(4, 'holehole', '030796b1ff84e200106802b505aa2f17', 'holecu', 'user');
 
 --
 -- Indexes for dumped tables
@@ -183,7 +187,7 @@ ALTER TABLE `tb_buku`
 -- AUTO_INCREMENT for table `tb_peminjam`
 --
 ALTER TABLE `tb_peminjam`
-  MODIFY `id_peminjam` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_peminjam` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_pengarang`
@@ -195,7 +199,7 @@ ALTER TABLE `tb_pengarang`
 -- AUTO_INCREMENT for table `tb_pengunjung`
 --
 ALTER TABLE `tb_pengunjung`
-  MODIFY `id_visitor` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_visitor` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_user`

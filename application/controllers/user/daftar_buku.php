@@ -20,6 +20,7 @@ class Daftar_buku extends CI_Controller {
 
     public function request($id_buku)
     {
+        
         $user_id =$this->session->userdata('user_id');
         $data = array (
             'id_buku' =>$id_buku,
@@ -31,7 +32,7 @@ class Daftar_buku extends CI_Controller {
             if ($insert != '') {
                 $id     = $this->db->insert_id();
                 $this->session->set_flashdata('pesan', 'Data successfully add');
-                redirect('user/daftar_buku');
+                redirect('user/history');
             }
     }
 

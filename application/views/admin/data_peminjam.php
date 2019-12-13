@@ -43,62 +43,6 @@
     </div>
   </div>
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Tambah Peminjam</h4>
-        </div>
-        <form action="<?php echo base_url(''); ?>admin/data_peminjam/add_peminjam" method="POST">
-          <div class="modal-body">
-            <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label">Id Visitor</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="id_user">
-              </div>
-            </div><br><br>
-
-            <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label">Id Buku</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="id_buku">
-              </div>
-            </div><br><br>
-
-            <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label">Tanggal Mulai</label>
-              <div class="col-sm-10">
-                <input type="date" class="form-control" name="start_date" value="<?php echo isset($itemOutData->date_out) ? set_value('date_out', date('Y-m-d', strtotime($itemOutData->date_out))) : set_value('date_out'); ?>">
-              </div>
-            </div><br><br>            
-            <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label">Tanggal Selesai</label>
-              <div class="col-sm-10">
-                <input type="date" class="form-control" name="end_date" value="<?php echo isset($itemOutData->date_out) ? set_value('date_out', date('Y-m-d', strtotime($itemOutData->date_out))) : set_value('date_out'); ?>">
-              </div>
-            </div><br><br>
-
-            <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label">Status</label>
-              <div class="col-sm-10">
-               <select class="form-control" name="id_pengarang" >
-                <option value="" selected="" disabled="">Pilih status</option>
-                <?php foreach ($status as $s) {?>
-                  <option value="<?php echo $s->status ?>"><?php echo $s->status ?></option>
-                <?php }?>
-              </select>
-            </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-success" name="submit">Simpan</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 
 <div id="modal_edit_peminjam" class="modal fade" role="dialog">
@@ -115,14 +59,14 @@
                <input type="hidden" class="form-control" name="id_peminjam_edit" id="id_peminjam_edit">
               <label class="col-sm-2 col-sm-2 control-label">Nama Peminjam</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="nama_peminjam" id="nama_peminjam" disabled>
+                <input type="text" class="form-control" name="nama_peminjam" id="nama_peminjam" readonly="">
               </div>
             </div><br><br>
 
             <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Nama Buku</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="nama_buku" id="nama_buku">
+                <input type="text" class="form-control" name="nama_buku" id="nama_buku" readonly="">
               </div>
             </div><br><br>
 
@@ -137,7 +81,17 @@
               <div class="col-sm-10">
                 <input type="date" class="form-control" id="end_date" name="end_date" value="<?php echo isset($itemOutData->date_out) ? set_value('date_out', date('Y-m-d', strtotime($itemOutData->date_out))) : set_value('date_out'); ?>">
               </div>
-            </div><br><br>          
+            </div><br><br>
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Status</label>
+              <div class="col-sm-10">
+               <select class="form-control" name="status" >
+                <option value="" selected="" disabled="">Pilih status</option>
+                <option value="Request">Request</option>
+                <option value="Approve">Approve</option>
+                <option value="Decline">Decline</option>
+              </select>
+            </div><br><br>      
         </div>
         <div class="modal-footer">
                  <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -149,27 +103,8 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="modal_delete" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <form method="POST" action="<?php echo base_url(''); ?>admin/data_peminjam/delete_peminjam">
-      <div class="modal-content">
-        <div class="modal-body">
-          <span>Apakah anda yakin menghapus data ini?</span>
-          <input type="hidden" name="id_peminjam" id="id_peminjam">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button> 
-          <button type="submit" class="btn btn-success" name="submit">Ya</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
 <script type="text/javascript">
-  <script type="text/javascript">
+  
   function edit_peminjam(id_peminjam)
   {
     $.ajax({
@@ -180,8 +115,9 @@
       {
         console.log(data);
         $('[id="id_peminjam_edit"]').val(data.id_peminjam);
-        $('[id="status"]').val(data.status);
-        $('#modal_edit_buku').modal('show');
+        $('[id="nama_peminjam"]').val(data.nama_user);
+        $('[id="nama_buku"]').val(data.judul);
+        $('#modal_edit_peminjam').modal('show');
       },
       error: function (jqXHR, textStatus, errorThrown)
       {

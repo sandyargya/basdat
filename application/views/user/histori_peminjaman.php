@@ -40,45 +40,41 @@
        <div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-book"></i> Data Buku</h3>
+      <h3 class="panel-title"><i class="fa fa-user"></i> Data Peminjam</h3>
     </div>
     <div class="panel-body">
       <div class="col-md-12">
         <div class="content-panel">
-          <h4><i class="fa fa-angle-right"></i> Data Buku</h4>
-       
-
+          <h4><i class="fa fa-angle-right"></i> Data Peminjam</h4>
           <hr>
           <table class="table">
             <thead>
               <tr>
                 <th>#</th>
-                <th>ID Buku</th>
-                <th>Judul</th>
-                <th>ISBN</th>
-                <th>Genre</th>
-                <th>Pengarang</th>
-                <th>Stok Buku</th>
-                <th>Action</th>
+                <th>ID Peminjam</th>
+                <th>Nama Peminjam</th>
+                <th>Nama Buku</th>
+                <th>Tanggal Mulai</th>
+                <th>Tanggal Selesai</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <?php $n=1; foreach($buku as $asu) { ?>
+              <?php $n=1; foreach($peminjam as $hai){?>
                 <tr>
                   <td><?php echo $n++?></td>
-                  <td><?php echo $asu->id_buku ?></td>
-                  <td><?php echo $asu->judul ?></td>
-                  <td><?php echo $asu->isbn ?></td>
-                  <td><?php echo $asu->genre ?></td>
-                  <td><?php echo $asu->nama_pengarang ?></td>
-                  <td><?php echo $asu->stok ?></td>
-                  <td><a href="#" onclick="request(<?php echo $asu->id_buku;?>);"><button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i></button></a>
-                  </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </div><! --/content-panel -->
-        </div><!-- /col-md-12 -->
+                  <td><?php echo $hai->id_peminjam?></td>
+                  <td><?php echo $hai->nama_user?></td>
+                  <td><?php echo $hai->judul?></td>
+                  <td><?php echo $hai->start?></td>
+                  <td><?php echo $hai->end?></td>
+                  <td><?php echo $hai->status?></td>
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div><! --/content-panel -->
+      </div><!-- /col-md-12 -->
 
       </div>
     </div>
@@ -89,16 +85,7 @@
 
 
 
-<script type="text/javascript">
-    var url="<?php echo base_url();?>";
-    function request(id){
-       var r=confirm("Do you want to request this?")
-        if (r==true)
-          window.location = url+"user/daftar_buku/request/"+id;
-        else
-          return false;
-        } 
-</script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
