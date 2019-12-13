@@ -105,6 +105,24 @@
     </div>
   </div>
 </div>
+    
+   <div class="modal fade" id="modal_delete" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <form method="POST" action="<?php echo base_url(''); ?>admin/data_peminjam/delete_peminjam">
+      <div class="modal-content">
+        <div class="modal-body">
+          <span>Apakah anda yakin menghapus data ini?</span>
+          <input type="hidden" name="id_peminjam" id="id_peminjam">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-success" name="submit">Ya</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script type="text/javascript">
   
